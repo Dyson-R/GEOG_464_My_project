@@ -1,0 +1,29 @@
+{
+"type": "FeatureCollection",
+"name": "-4902_4568",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Bur Oak", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51713, 45.68997 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bitternut Hickory", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51758, 45.68988 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bitternut Hickory", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.5173, 45.68993 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Beech", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51714, 45.68992 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bur Oak", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51724, 45.68991 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Maple", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51733, 45.68988 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bitternut Hickory", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51743, 45.68987 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bitternut Hickory", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51752, 45.68985 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Beech", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51762, 45.68984 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bur Oak", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51772, 45.68982 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Maple", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51782, 45.6898 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bitternut Hickory", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51791, 45.68979 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bitternut Hickory", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51802, 45.68977 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Beech", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51813, 45.68975 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bur Oak", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51826, 45.68973 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bitternut Hickory", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51749, 45.68989 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Maple", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51768, 45.68986 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Maple", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51777, 45.68984 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bur Oak", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51787, 45.68983 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Maple", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51797, 45.68981 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bitternut Hickory", "DHP": 5.0, "Date_Plantation": "2025-06-23" }, "geometry": { "type": "Point", "coordinates": [ -73.51739, 45.68991 ] } }
+]
+}

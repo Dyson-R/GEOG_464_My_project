@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "-4903_4568",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Ash", "DHP": 50.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.53133, 45.68187 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Ash", "DHP": 45.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.53127, 45.68189 ] } }
+]
+}

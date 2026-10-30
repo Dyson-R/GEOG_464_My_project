@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"name": "-4936_4575",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Sheridan Littleleaf Linden", "DHP": 5.0, "Date_Plantation": "2024-05-13" }, "geometry": { "type": "Point", "coordinates": [ -74.02647, 45.7565 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Sheridan Littleleaf Linden", "DHP": 5.0, "Date_Plantation": "2024-05-13" }, "geometry": { "type": "Point", "coordinates": [ -74.02659, 45.75656 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 59.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -74.02671, 45.75662 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Oak", "DHP": 2.0, "Date_Plantation": "2023-05-19" }, "geometry": { "type": "Point", "coordinates": [ -74.02684, 45.75668 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Austrian Pine", "DHP": 23.0, "Date_Plantation": "2013-10-07" }, "geometry": { "type": "Point", "coordinates": [ -74.02696, 45.75674 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Downy Serviceberry", "DHP": 7.0, "Date_Plantation": "2013-10-05" }, "geometry": { "type": "Point", "coordinates": [ -74.03193, 45.75914 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Downy Serviceberry", "DHP": 6.0, "Date_Plantation": "2013-10-05" }, "geometry": { "type": "Point", "coordinates": [ -74.03205, 45.7592 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Downy Serviceberry", "DHP": 3.0, "Date_Plantation": "2013-10-05" }, "geometry": { "type": "Point", "coordinates": [ -74.03217, 45.75926 ] } }
+]
+}

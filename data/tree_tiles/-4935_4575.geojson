@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "-4935_4575",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Austrian Pine", "DHP": 18.0, "Date_Plantation": "2013-10-31" }, "geometry": { "type": "Point", "coordinates": [ -74.02187, 45.75429 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Austrian Pine", "DHP": 21.0, "Date_Plantation": "2013-10-31" }, "geometry": { "type": "Point", "coordinates": [ -74.02212, 45.75441 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Austrian Pine", "DHP": 21.0, "Date_Plantation": "2013-10-31" }, "geometry": { "type": "Point", "coordinates": [ -74.02237, 45.75453 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Austrian Pine", "DHP": 20.0, "Date_Plantation": "2013-10-31" }, "geometry": { "type": "Point", "coordinates": [ -74.02262, 45.75465 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Austrian Pine", "DHP": 19.0, "Date_Plantation": "2013-10-31" }, "geometry": { "type": "Point", "coordinates": [ -74.02287, 45.75477 ] } }
+]
+}

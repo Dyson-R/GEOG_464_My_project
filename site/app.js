@@ -43,6 +43,16 @@ let heatLayer = null;                // filled in once the files below have load
 let zoneImage = null;
 let treeGrid = null;                 // square size and the list of squares that have trees
 let requestNumber = 0;               // used to ignore downloads that finish after you've already moved on
+
+// Borough chart and selection
+const TREE_DATA_MIN = 50;            // under 50 trees per km² means the borough isn't in the tree inventory
+let selectedName = null;             // the borough picked last, on the map or in the chart
+const boroughLayers = {};            // borough name -> its shape on the map
+let boroughStyle = null;             // the style function, filled in once the boroughs load
+
+function hasTreeData(p) {
+  return Number(p.trees_per_km2) >= TREE_DATA_MIN;
+}
  
  
 // ---------- START-UP: three small files, loaded together ----------
@@ -74,14 +84,17 @@ Promise.all([
       return heatColours[i];
     }
  
-    function boroughStyle(feature) {
+    // Each borough's look: its heat colour, a dark thick outline if selected,
+    // and a fill that fades as you zoom in (see boroughFill below).
+    boroughStyle = function (feature) {
+      const selected = feature.properties.NOM === selectedName;
       return {
-        color: '#ffffff',
-        weight: 1.5,
-        fillOpacity: 0.8,
+        color: selected ? '#1b1f2a' : '#ffffff',
+        weight: selected ? 3 : 1.5,
+        fillOpacity: boroughFill(),
         fillColor: heatColour(feature.properties.temp_mean)
       };
-    }
+    };
  
     heatLayer = L.geoJSON(data, {
       style: boroughStyle,
@@ -90,7 +103,13 @@ Promise.all([
         layer.bindPopup('<strong>' + p.NOM + '</strong><br>' +
           'Average surface temperature: ' + p.temp_mean + ' °C<br>' +
           'Area classed as heat island: ' + p.pct_heat_island + ' %<br>' +
-          'Public trees: ' + p.tree_count + ' (' + p.trees_per_km2 + ' per km²)');
+          'Public trees: ' + (hasTreeData(p)
+            ? p.tree_count + ' (' + p.trees_per_km2 + ' per km²)'
+            : 'no data (not in the city’s tree inventory)'));
+
+        boroughLayers[p.NOM] = layer;
+        // Clicking a borough on the map highlights it here and in the chart (the popup opens on its own).
+        layer.on('click', function () { selectBorough(p.NOM, false); });
       }
     });
     heatLayer.addTo(map);
@@ -132,6 +151,7 @@ Promise.all([
       { collapsed: false }
     ).addTo(map);
  
+    buildChart(data.features, heatColour);
     updateMap();   // in case the map starts zoomed in
   })
   .catch(function (err) {
@@ -140,6 +160,74 @@ Promise.all([
   });
  
  
+// ---------- BOROUGH CHART ----------
+
+// How solid the borough colours are: full when zoomed out, clear once the zones show, light under the trees.
+function boroughFill() {
+  const zoom = map.getZoom();
+  if (zoom >= ZONE_ZOOM && map.hasLayer(zonesLayer)) { return 0; }
+  return zoom >= TREE_ZOOM ? 0.35 : 0.8;
+}
+
+// One bar per borough, hottest at the top, in the same colours as the map.
+function buildChart(features, heatColour) {
+  const chart = document.getElementById('chart');
+  if (!chart) { return; }   // no chart box in index.html
+
+  const rows = features
+    .filter(function (f) { return !isNaN(Number(f.properties.temp_mean)); })
+    .sort(function (a, b) { return b.properties.temp_mean - a.properties.temp_mean; });
+
+  // Bars start 1 °C below the coolest borough, so the differences are visible.
+  const max = rows[0].properties.temp_mean;
+  const low = Math.floor(rows[rows.length - 1].properties.temp_mean) - 1;
+
+  chart.innerHTML = '<div class="chart-head"><span>Borough</span><span>Avg. surface temperature</span>' +
+    '<span></span><span>Trees / km²</span></div>';
+
+  rows.forEach(function (f) {
+    const p = f.properties;
+    const width = 100 * (p.temp_mean - low) / (max - low);
+    const row = document.createElement('button');   // a button, so it also works with the keyboard
+    row.type = 'button';
+    row.className = 'chart-row';
+    row.dataset.name = p.NOM;
+    row.innerHTML =
+      '<span class="chart-name" title="' + p.NOM + '">' + p.NOM + '</span>' +
+      '<span class="chart-track"><span class="chart-bar" style="width:' + width + '%; background:' +
+        heatColour(p.temp_mean) + '"></span></span>' +
+      '<span class="chart-temp">' + Number(p.temp_mean).toFixed(1) + ' °C</span>' +
+      '<span class="chart-trees">' + (hasTreeData(p)
+        ? Number(p.trees_per_km2).toLocaleString('en-CA')
+        : '<em>no data</em>') + '</span>';
+    row.addEventListener('click', function () { selectBorough(p.NOM, true); });
+    chart.appendChild(row);
+  });
+
+  const scale = document.getElementById('chart-scale');
+  if (scale) { scale.textContent = 'Bars start at ' + low + ' °C, so short bars are cooler, not near zero.'; }
+}
+
+// Pick a borough, from the chart (zoom to it) or from the map (you're already looking at it).
+// A new pick always replaces the old one, so the map and the chart point at the same borough.
+function selectBorough(name, fromChart) {
+  selectedName = name;
+  heatLayer.setStyle(boroughStyle);   // move the dark outline
+
+  document.querySelectorAll('.chart-row').forEach(function (row) {
+    row.classList.toggle('selected', row.dataset.name === name);
+    if (row.dataset.name === name && !fromChart) { row.scrollIntoView({ block: 'nearest' }); }
+  });
+
+  if (fromChart) {
+    if (!map.hasLayer(heatLayer)) { heatLayer.addTo(map); }   // turn the boroughs back on if they were off
+    const layer = boroughLayers[name];
+    map.fitBounds(layer.getBounds());
+    layer.openPopup();
+  }
+}
+
+
 // ---------- HEAT ZONES AND TREES: shown by zoom ----------
 
 // Every time the map stops moving or zooming, and when a layer is ticked or unticked, refresh.
@@ -153,7 +241,7 @@ function updateMap() {
   const showTrees = zoom >= TREE_ZOOM && map.hasLayer(treesLayer);
 
   // Boroughs: full colour when zoomed out, only their outlines once the zones take over.
-  heatLayer.setStyle({ fillOpacity: showZones ? 0 : (zoom >= TREE_ZOOM ? 0.35 : 0.8) });
+  heatLayer.setStyle(boroughStyle);
 
   // Zones: add the picture once, fade it a little when the trees are on top.
   if (showZones) {

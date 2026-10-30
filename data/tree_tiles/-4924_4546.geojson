@@ -1,0 +1,27 @@
+{
+"type": "FeatureCollection",
+"name": "-4924_4546",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Sugar Maple", "DHP": 81.0, "Date_Plantation": "2008-11-30" }, "geometry": { "type": "Point", "coordinates": [ -73.85991, 45.46867 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Others", "DHP": 5.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.85932, 45.4693 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Colorado Spruce", "DHP": 35.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.85986, 45.46728 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Tulip Tree", "DHP": 5.0, "Date_Plantation": "2018-10-25" }, "geometry": { "type": "Point", "coordinates": [ -73.85848, 45.46812 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Autumn Gold Maidenhair Tree", "DHP": 5.0, "Date_Plantation": "2018-10-25" }, "geometry": { "type": "Point", "coordinates": [ -73.85907, 45.46767 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bauman's Horsechesnut", "DHP": 5.0, "Date_Plantation": "2018-10-25" }, "geometry": { "type": "Point", "coordinates": [ -73.85935, 45.46744 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 5.0, "Date_Plantation": "2018-10-25" }, "geometry": { "type": "Point", "coordinates": [ -73.85994, 45.46679 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Colorado Spruce", "DHP": 40.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.85639, 45.46957 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Colorado Spruce", "DHP": 40.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.85659, 45.46941 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "White Spruce", "DHP": 15.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.85694, 45.46912 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 41.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.85681, 45.46945 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 47.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.85676, 45.46953 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 45.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.85667, 45.4696 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Regal Prince Oak", "DHP": 5.0, "Date_Plantation": "2022-05-03" }, "geometry": { "type": "Point", "coordinates": [ -73.85839, 45.46878 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Regal Prince Oak", "DHP": 8.0, "Date_Plantation": "2022-05-03" }, "geometry": { "type": "Point", "coordinates": [ -73.85825, 45.46874 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Sugar Maple", "DHP": 25.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.85832, 45.46949 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Beech", "DHP": 25.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.85864, 45.46981 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Sugar Maple", "DHP": 88.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.85962, 45.4699 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Sugar Maple", "DHP": 44.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.85988, 45.46946 ] } }
+]
+}

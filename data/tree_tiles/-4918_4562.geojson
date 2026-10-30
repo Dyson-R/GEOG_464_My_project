@@ -1,0 +1,20 @@
+{
+"type": "FeatureCollection",
+"name": "-4918_4562",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 19.0, "Date_Plantation": "2019-09-13" }, "geometry": { "type": "Point", "coordinates": [ -73.75507, 45.62486 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 17.0, "Date_Plantation": "2019-09-13" }, "geometry": { "type": "Point", "coordinates": [ -73.7552, 45.62492 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 16.0, "Date_Plantation": "2019-09-13" }, "geometry": { "type": "Point", "coordinates": [ -73.75532, 45.62499 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 19.0, "Date_Plantation": "2019-09-13" }, "geometry": { "type": "Point", "coordinates": [ -73.75544, 45.62505 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 18.0, "Date_Plantation": "2019-09-13" }, "geometry": { "type": "Point", "coordinates": [ -73.75557, 45.6251 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Skyline Honey-Locust", "DHP": 8.0, "Date_Plantation": "2022-11-25" }, "geometry": { "type": "Point", "coordinates": [ -73.75569, 45.62517 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Skyline Honey-Locust", "DHP": 8.0, "Date_Plantation": "2022-11-15" }, "geometry": { "type": "Point", "coordinates": [ -73.75581, 45.62523 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Skyline Honey-Locust", "DHP": 7.0, "Date_Plantation": "2022-11-25" }, "geometry": { "type": "Point", "coordinates": [ -73.75594, 45.62529 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Skyline Honey-Locust", "DHP": 7.0, "Date_Plantation": "2022-11-25" }, "geometry": { "type": "Point", "coordinates": [ -73.75606, 45.62535 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Autumn Blaze Freeman Maple", "DHP": 14.1, "Date_Plantation": "2022-11-25" }, "geometry": { "type": "Point", "coordinates": [ -73.75618, 45.62541 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Acer x freemanii 'Autumn Fantasy'", "DHP": 4.0, "Date_Plantation": "2024-10-18" }, "geometry": { "type": "Point", "coordinates": [ -73.75631, 45.62547 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 5.0, "Date_Plantation": "2024-10-18" }, "geometry": { "type": "Point", "coordinates": [ -73.75643, 45.62553 ] } }
+]
+}

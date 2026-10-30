@@ -1,0 +1,28 @@
+{
+"type": "FeatureCollection",
+"name": "montreal-nord",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 26.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617789, 45.627154 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Scots Pine", "DHP": 32.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617764, 45.627141 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 41.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617741, 45.627118 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 24.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617705, 45.627077 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Scots Pine", "DHP": 41.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.61767, 45.627059 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Scots Pine", "DHP": 39.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617659, 45.627029 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Scots Pine", "DHP": 38.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617633, 45.627003 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Scots Pine", "DHP": 28.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617588, 45.626973 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Scots Pine", "DHP": 37.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617562, 45.626959 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 28.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617556, 45.626937 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Scots Pine", "DHP": 49.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.61748, 45.626873 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 27.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617447, 45.626848 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 32.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617255, 45.626673 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 30.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617302, 45.626711 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 41.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.61732, 45.626733 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 29.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617335, 45.626751 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Pine", "DHP": 24.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.61738, 45.626783 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Scots Pine", "DHP": 42.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.617423, 45.626837 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 5.0, "Date_Plantation": "2023-05-17T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.641086, 45.577921 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Sugar Maple", "DHP": 29.0, "Date_Plantation": "1990-05-01T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.641207, 45.57799 ] } }
+]
+}

@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "-4915_4545",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Oak", "DHP": 107.0, "Date_Plantation": "2001-05-18" }, "geometry": { "type": "Point", "coordinates": [ -73.71572, 45.45349 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Skyline Honey-Locust", "DHP": 5.0, "Date_Plantation": "2012-06-05" }, "geometry": { "type": "Point", "coordinates": [ -73.71983, 45.45569 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 56.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.71975, 45.45546 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 50.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.71987, 45.45584 ] } }
+]
+}

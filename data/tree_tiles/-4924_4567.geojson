@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"name": "-4924_4567",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 8.0, "Date_Plantation": "2022-09-18" }, "geometry": { "type": "Point", "coordinates": [ -73.85187, 45.67196 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 22.0, "Date_Plantation": "2008-09-09" }, "geometry": { "type": "Point", "coordinates": [ -73.85199, 45.67202 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 28.0, "Date_Plantation": "2008-09-09" }, "geometry": { "type": "Point", "coordinates": [ -73.85212, 45.67208 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 26.0, "Date_Plantation": "2008-09-09" }, "geometry": { "type": "Point", "coordinates": [ -73.85224, 45.67214 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 29.0, "Date_Plantation": "2008-09-09" }, "geometry": { "type": "Point", "coordinates": [ -73.85237, 45.6722 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morton (Accolade TM) Elm", "DHP": 25.0, "Date_Plantation": "2008-09-09" }, "geometry": { "type": "Point", "coordinates": [ -73.85261, 45.67232 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Homestead Elm", "DHP": 22.0, "Date_Plantation": "2008-09-09" }, "geometry": { "type": "Point", "coordinates": [ -73.85274, 45.67238 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Homestead Elm", "DHP": 25.0, "Date_Plantation": "2008-09-09" }, "geometry": { "type": "Point", "coordinates": [ -73.85286, 45.67244 ] } }
+]
+}

@@ -1,0 +1,25 @@
+{
+"type": "FeatureCollection",
+"name": "-4903_4564",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 5.0, "Date_Plantation": "2025-06-17" }, "geometry": { "type": "Point", "coordinates": [ -73.54299, 45.64941 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Eastern White Pine", "DHP": 5.0, "Date_Plantation": "2025-06-20" }, "geometry": { "type": "Point", "coordinates": [ -73.54321, 45.64931 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Hop-Hornbeam Ironwood", "DHP": 5.0, "Date_Plantation": "2025-06-20" }, "geometry": { "type": "Point", "coordinates": [ -73.5431, 45.64936 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 5.0, "Date_Plantation": "2025-06-20" }, "geometry": { "type": "Point", "coordinates": [ -73.54333, 45.64927 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 5.0, "Date_Plantation": "2025-06-20" }, "geometry": { "type": "Point", "coordinates": [ -73.54289, 45.64945 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Hop-Hornbeam Ironwood", "DHP": 5.0, "Date_Plantation": "2025-06-20" }, "geometry": { "type": "Point", "coordinates": [ -73.54281, 45.64948 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Morgan Maple", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54323, 45.64894 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54314, 45.64897 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Hop-Hornbeam Ironwood", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54306, 45.64902 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Homestead Elm", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54297, 45.64905 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54289, 45.6491 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Hop-Hornbeam Ironwood", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.5428, 45.64914 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Homestead Elm", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54271, 45.64917 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54263, 45.64921 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Hop-Hornbeam Ironwood", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54254, 45.64925 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54245, 45.64929 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "American Hop-Hornbeam Ironwood", "DHP": 5.0, "Date_Plantation": "2022-04-21" }, "geometry": { "type": "Point", "coordinates": [ -73.54236, 45.64932 ] } }
+]
+}

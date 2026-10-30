@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "-4919_4549",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Autumn Gold Maidenhair Tree", "DHP": 7.0, "Date_Plantation": "2017-10-25" }, "geometry": { "type": "Point", "coordinates": [ -73.77328, 45.49936 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Oak", "DHP": 10.0, "Date_Plantation": "2017-06-14" }, "geometry": { "type": "Point", "coordinates": [ -73.77337, 45.4993 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Autumn Gold Maidenhair Tree", "DHP": 6.0, "Date_Plantation": "2017-10-25" }, "geometry": { "type": "Point", "coordinates": [ -73.77346, 45.49925 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Oak", "DHP": 7.0, "Date_Plantation": "2017-06-14" }, "geometry": { "type": "Point", "coordinates": [ -73.77357, 45.49919 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Autumn Gold Maidenhair Tree", "DHP": 5.0, "Date_Plantation": "2017-10-25" }, "geometry": { "type": "Point", "coordinates": [ -73.77369, 45.49916 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "White Spruce", "DHP": 13.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.78333, 45.49991 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Basswood", "DHP": 5.0, "Date_Plantation": "2025-09-24" }, "geometry": { "type": "Point", "coordinates": [ -73.78278, 45.49996 ] } }
+]
+}

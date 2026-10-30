@@ -1,0 +1,33 @@
+{
+"type": "FeatureCollection",
+"name": "-4930_4545",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Ash", "DHP": 42.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.9356, 45.45116 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Ash", "DHP": 48.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.93542, 45.45108 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Ash", "DHP": 55.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.93536, 45.45101 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Ash", "DHP": 17.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.93574, 45.45101 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 30.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93607, 45.45497 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 29.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93609, 45.45496 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 18.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93623, 45.45467 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 26.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93558, 45.45278 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Siberian Elm", "DHP": 23.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93621, 45.45204 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Oak", "DHP": 49.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93646, 45.45187 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "White Elm", "DHP": 25.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93646, 45.45187 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bur Oak", "DHP": 28.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93659, 45.45148 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Eastern Cottonwood", "DHP": 65.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93677, 45.45089 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Mountain Ash", "DHP": 20.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93668, 45.45116 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 24.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93639, 45.45176 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bur Oak", "DHP": 77.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93529, 45.45514 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Hackberry", "DHP": 13.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93533, 45.45513 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Ash", "DHP": 25.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93532, 45.45514 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "White Elm", "DHP": 15.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93581, 45.45496 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Ash", "DHP": 46.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93594, 45.45426 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Ash", "DHP": 29.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93558, 45.45362 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Red Ash", "DHP": 27.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93538, 45.45289 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "White Elm", "DHP": 28.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93558, 45.45252 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "White Elm", "DHP": 8.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93635, 45.45154 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "White Elm", "DHP": 9.0, "Date_Plantation": "2002-12-31" }, "geometry": { "type": "Point", "coordinates": [ -73.93613, 45.45134 ] } }
+]
+}

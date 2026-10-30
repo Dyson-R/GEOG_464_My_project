@@ -1,0 +1,24 @@
+{
+"type": "FeatureCollection",
+"name": "-4915_4546",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 47.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 76.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 57.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 35.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 43.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 42.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 36.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 51.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 11.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 75.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 41.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 51.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 46.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 35.0, "Date_Plantation": "2002-07-16" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Emerald Queen Norway Maple", "DHP": 4.0, "Date_Plantation": "2006-11-22" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Norway Maple", "DHP": 0.0, "Date_Plantation": "2006-11-22" }, "geometry": { "type": "Point", "coordinates": [ -73.72182, 45.46088 ] } }
+]
+}

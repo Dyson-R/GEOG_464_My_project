@@ -1,0 +1,30 @@
+{
+"type": "FeatureCollection",
+"name": "-4917_4552",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-05,
+"features": [
+{ "type": "Feature", "properties": { "Essence_ang": "Colorado Spruce", "DHP": 51.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74093, 45.52011 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Colorado Spruce", "DHP": 42.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74107, 45.5202 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Colorado Spruce", "DHP": 42.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74101, 45.52015 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Imperialis European Black Alder", "DHP": 5.0, "Date_Plantation": "2016-11-02" }, "geometry": { "type": "Point", "coordinates": [ -73.74077, 45.52001 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Ulmus x New Horizon", "DHP": 5.0, "Date_Plantation": "2016-11-02" }, "geometry": { "type": "Point", "coordinates": [ -73.74123, 45.52009 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Western Catalpa", "DHP": 5.0, "Date_Plantation": "2021-10-05" }, "geometry": { "type": "Point", "coordinates": [ -73.74027, 45.52214 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Kentucky Coffeetree 'Espresso'", "DHP": 5.0, "Date_Plantation": "2017-05-18" }, "geometry": { "type": "Point", "coordinates": [ -73.74036, 45.52221 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Tulip Tree", "DHP": 15.0, "Date_Plantation": "2017-05-18" }, "geometry": { "type": "Point", "coordinates": [ -73.74049, 45.5223 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Autumn Gold Maidenhair Tree", "DHP": 5.0, "Date_Plantation": "2017-05-18" }, "geometry": { "type": "Point", "coordinates": [ -73.74067, 45.52241 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Bur Oak", "DHP": 5.0, "Date_Plantation": "2021-10-05" }, "geometry": { "type": "Point", "coordinates": [ -73.74093, 45.52258 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Macho Amur Cork Tree", "DHP": 5.0, "Date_Plantation": "2021-10-07" }, "geometry": { "type": "Point", "coordinates": [ -73.7412, 45.52276 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 48.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74131, 45.52276 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Sugar Maple", "DHP": 24.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74012, 45.52189 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 68.4, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74039, 45.52206 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 72.6, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74026, 45.52199 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Sugar Maple", "DHP": 45.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74052, 45.52214 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Amur Maackia", "DHP": 5.0, "Date_Plantation": "2021-10-05" }, "geometry": { "type": "Point", "coordinates": [ -73.74058, 45.5222 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Swamp White Oak", "DHP": 5.0, "Date_Plantation": "2017-05-18" }, "geometry": { "type": "Point", "coordinates": [ -73.74079, 45.52233 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Yellow Birch", "DHP": 5.0, "Date_Plantation": "2017-05-18" }, "geometry": { "type": "Point", "coordinates": [ -73.74098, 45.52245 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 75.1, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74121, 45.52247 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Silver Maple", "DHP": 36.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74145, 45.52261 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": "Common Horsechesnut", "DHP": 43.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.74142, 45.52272 ] } }
+]
+}
