@@ -29,11 +29,12 @@ It has depth because it responds in both directions, you can click on the bar an
 I will know it works when it displays heat data for all boroughs and clicking on a bar changes where we are zoomed in on the map.
 My edge case is is the six boroughs with no public tree data (Outremont, Anjou, LaSalle, Montréal-Nord, Saint-Laurent and L’Île-Bizard–Sainte-Geneviève). Their bars must say “no tree data” instead of showing 0 trees per km², so a planner doesn’t read missing data as “this borough has no trees”. There should be no errors in the console.
 
-Test 1. I will zoom into the map to be able to see the heat zones and trees and click on a tree point.
-Expected: at zoom at zoom 13 the heat zones appear and at zoom 15 the trees appear and the dot displays tree type, diameter, and date of planting.
-Test 2. With that tree's popup open, I click a different tree, then drag the map a short distance, then zoom all the way back out.
-Expected: The second click replaces the first popup, so only one tree's answer shows at a time. After the short drag, that popup stays open while its tree is still on screen. When I zoom out past street level, the trees and popup disappear and the status says "Zoom in further to see the public trees." At the whole-island view, the borough colours come back.
-Test 3. With the console open, I zoom to street level over Outremont, where the city has no public tree data.
+Test 1. I will Click on Saint-Leonard on the graph. 
+Expected: It will zoom to the borough allowing me to see heat zones and showing me the boroughs popup with tree and temperature data. 
+
+Test 2. With the Saint-Leonard borough popup open, I will zoom out and click on annother borough. 
+Expected: The heat zones will dissapear and the borough heat polygon will apear, when clickign on annother borough its popup will show and the borough will be highlighted in the graph. 
+Test 3. With the console open, I zoom to street level over Saint-Laurent, where the city has no public tree data.
 Expected: The heat zones show but there are no tree dots, and the status line explains that there is no public tree data for this area. No red errors in the console.
 
 © 2026 Luke Russell. All rights reserved.

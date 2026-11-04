@@ -1,2 +1,15 @@
-/data
-/heat_island
+# Raw data: too big for GitHub, and the website doesn't load them
+data/heat_island/ICU_20250821.*
+data/Public_Trees.geojson
+data/public_trees.csv
+data/public_trees_combined.csv
+data/inventaire-arbre-outremont.csv
+heat_island/
+
+# Older versions the site no longer uses
+data/trees_by_borough/
+data/heat_zones_by_borough/
+
+# Files Jupyter makes on its own
+.ipynb_checkpoints/
+__pycache__/
