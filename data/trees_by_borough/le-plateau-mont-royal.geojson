@@ -20005,6 +20005,8 @@
 { "type": "Feature", "properties": { "Essence_ang": "Kentucky Coffeetree", "DHP": 5.0, "Date_Plantation": "2017-05-07T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.573853, 45.505212 ] } },
 { "type": "Feature", "properties": { "Essence_ang": "Kentucky Coffeetree", "DHP": 5.0, "Date_Plantation": "2014-05-31T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.573981, 45.505275 ] } },
 { "type": "Feature", "properties": { "Essence_ang": "Kentucky Coffeetree", "DHP": 5.0, "Date_Plantation": "2023-05-26T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.573795, 45.505181 ] } },
-{ "type": "Feature", "properties": { "Essence_ang": "Kentucky Coffeetree", "DHP": 5.0, "Date_Plantation": "2023-05-26T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.573917, 45.505242 ] } }
+{ "type": "Feature", "properties": { "Essence_ang": "Kentucky Coffeetree", "DHP": 5.0, "Date_Plantation": "2023-05-26T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.573917, 45.505242 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": null, "DHP": 38.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.593228, 45.517105 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": null, "DHP": 67.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.59514, 45.517952 ] } }
 ]
 }

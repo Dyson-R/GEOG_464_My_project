@@ -29055,6 +29055,8 @@
 { "type": "Feature", "properties": { "Essence_ang": "Nyssa sylvatica", "DHP": 5.0, "Date_Plantation": "2025-07-10T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.618286, 45.494173 ] } },
 { "type": "Feature", "properties": { "Essence_ang": "Malus x adstringens 'Durleo' (GladiatorTM)", "DHP": 5.0, "Date_Plantation": "2025-07-10T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.618329, 45.494129 ] } },
 { "type": "Feature", "properties": { "Essence_ang": "DreamWeaver columnar Crabapple", "DHP": 5.0, "Date_Plantation": "2025-07-10T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.61837, 45.494084 ] } },
-{ "type": "Feature", "properties": { "Essence_ang": "Moraine Sweetgum", "DHP": 5.0, "Date_Plantation": "2025-07-10T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.618094, 45.494385 ] } }
+{ "type": "Feature", "properties": { "Essence_ang": "Moraine Sweetgum", "DHP": 5.0, "Date_Plantation": "2025-07-10T00:00:00" }, "geometry": { "type": "Point", "coordinates": [ -73.618094, 45.494385 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": null, "DHP": 62.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.618657, 45.511401 ] } },
+{ "type": "Feature", "properties": { "Essence_ang": null, "DHP": 23.0, "Date_Plantation": null }, "geometry": { "type": "Point", "coordinates": [ -73.612745, 45.510326 ] } }
 ]
 }

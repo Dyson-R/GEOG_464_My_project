@@ -11,23 +11,12 @@
   <div class="page">
     <main class="story">
       <h1>Temperature And Public Trees in The Different Boroughs of Montreal</h1>
-      <p class="lede">Heat island effect is a problem that affects urban areas, including Montreal. This map helps identify hot spots and the distribution of public trees across the boroughs of Montreal.</p>
-      <p><strong>This map is for</strong> Urban Planners.</p>
-      <p><strong>What you can do here:</strong> You can click on each borough to see it's temperature data and amount of trees. If you click on the trees you will additionally obtain information about the species of the tree, its diameter and date of planting.</p>
       <p id="status">Loading boroughs...</p>
-      </section>
       <section>
         <h2>Borough temperatures, hottest to coolest</h2>
         <p class="chart-note">Click a borough to zoom to it on the map. The last column shows public trees per km².</p>
         <div id="chart">Loading chart...</div>
         <p class="chart-note" id="chart-scale"></p>
-      </section>
-      <section>
-        <h2>Where this comes from</h2>
-        <ul>
-          <li><a href="https://donnees.montreal.ca/fr/dataset/dbdfbdba-0725-470d-a23e-da69dbedc4e6/resource/9682167b-f2cd-48aa-9848-798037c368b0/download/icu_20250821.json">Îlots de chaleur 2025 </a>, Données Quebec,  Attribution (CC-BY 4.0), accessed 13/10/2026. I grouped the individual heat zones by borough to have one polygon per borough.</li>
-          <li><a href="https://donnees.montreal.ca/dataset/arbres/resource/64e28fe6-ef37-437a-972d-d1d3f1f7d891">Inventaire arbres publics - Fichier consolidé (Arrondissements dans le système corporatif seulement)</a>,Ville de Montréal., Creative Commons Attribution 4.0 International, accessed 13/10/2026. I only kept the location, type, DBH and planting date of each tree.</li>
-        </ul>
       </section>
     </main>
     <div id="map"></div>
