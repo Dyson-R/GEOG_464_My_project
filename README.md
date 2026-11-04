@@ -46,7 +46,7 @@ Expected: The heat zones show but there are no tree dots, and the status line ex
 | 3. Ask twice | pass | ... |
 | 4. The edge | pass| ... |
 | 5. The data does not come | Fault | added new message box that shows what file is missing  |
-| 6. On a phone (size view and my phone) | ... | ... |
-| 7. Mouse in my pocket | ... | ... |
-| 8. Accessibility audit | ... | ... |
+| 6. On a phone (size view and my phone) | fault | changed the legend and dot size |
+| 7. Mouse in my pocket | pass | ... |
+| 8. Accessibility audit | pass | ... |
 © 2026 Luke Russell. All rights reserved.
