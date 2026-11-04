@@ -1,3 +1,40 @@
+// ---------- TELLING THE READER WHEN SOMETHING DIDN'T LOAD ----------
+// Each problem gets a key, so fixing one (e.g. trees load on the next try) doesn't hide another.
+// The message shows in the status line and in a box on top of the map.
+const problems = {};
+
+function setProblem(key, text) {
+  if (text) { problems[key] = text; } else { delete problems[key]; }
+  const messages = Object.keys(problems).map(function (k) { return problems[k]; });
+
+  const mapDiv = document.getElementById('map');
+  let box = document.getElementById('map-message');
+  if (!messages.length) {
+    if (box) { box.remove(); }
+    return;
+  }
+  if (!box && mapDiv) {
+    box = document.createElement('div');
+    box.id = 'map-message';
+    box.setAttribute('role', 'alert');   // screen readers read it out
+    box.style.cssText = 'position:absolute; z-index:1000; top:12px; left:50%; transform:translateX(-50%);' +
+      'max-width:80%; padding:10px 14px; background:#ffffff; color:#1b1f2a; border:2px solid #bd0026;' +
+      'border-radius:6px; font:14px/1.4 system-ui, sans-serif; box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+    if (getComputedStyle(mapDiv).position === 'static') { mapDiv.style.position = 'relative'; }
+    mapDiv.appendChild(box);
+  }
+  if (box) { box.textContent = messages.join(' '); }
+  setStatus(messages.join(' '));
+}
+
+
+// If the map library itself didn't load, say so in words instead of leaving a blank page.
+if (typeof L === 'undefined') {
+  setProblem('library', 'The map could not be loaded because the map library (Leaflet) did not download. ' +
+    'Check your internet connection and reload the page.');
+  throw new Error('Leaflet did not load');
+}
+
 // preferCanvas draws every shape on one canvas instead of one web page element each.
 const map = L.map('map', { preferCanvas: true }).setView([45.55, -73.65], 11);
  
@@ -26,12 +63,19 @@ function setStatus(text) {
   document.getElementById('status').textContent = text;
 }
 
-// Download a JSON file, with a clear error if it's missing.
+// Download a JSON file. If it fails (missing, blocked, or no connection), the error names the file.
 function getJSON(url) {
-  return fetch(url).then(function (response) {
-    if (!response.ok) { throw new Error('HTTP ' + response.status + ' loading ' + url); }
-    return response.json();
-  });
+  const file = url.split('/').pop();
+  return fetch(url)
+    .then(function (response) {
+      if (!response.ok) { throw new Error('HTTP ' + response.status); }
+      return response.json();
+    })
+    .catch(function (err) {
+      const problem = new Error(file + ' did not load (' + err.message + ')');
+      problem.file = file;
+      throw problem;
+    });
 }
  
 const zonesLayer = L.layerGroup();   // holds the zones image while zoomed in
@@ -119,6 +163,11 @@ Promise.all([
       pane: 'zonesPane',
       opacity: 0.75
     });
+    zoneImage.on('error', function () {
+      setProblem('zones', 'The heat zones image (heat_zones.png) did not load, so the detailed heat zones ' +
+        'cannot be shown. The borough colours are still correct. Reload the page to try again.');
+    });
+    zoneImage.on('load', function () { setProblem('zones', null); });
  
     // Legend: borough colours, zone colours (same colours, their own ranges), and trees.
     const legend = L.control({ position: 'bottomright' });
@@ -155,7 +204,10 @@ Promise.all([
     updateMap();   // in case the map starts zoomed in
   })
   .catch(function (err) {
-    setStatus('Could not load the map data. Open the console (F12) for details.');
+    setProblem('startup', 'The map data did not load (' + (err.file || 'a data file') + '), so the boroughs, ' +
+      'heat zones and trees cannot be shown. Check your internet connection and reload the page.');
+    const chart = document.getElementById('chart');
+    if (chart) { chart.textContent = 'The chart is not available because the borough data did not load.'; }
     console.error(err);
   });
  
@@ -256,6 +308,7 @@ function updateMap() {
 
   if (!showTrees) {
     treesLayer.clearLayers();
+    if (problems.trees) { setProblem('trees', null); }
     setStatus(zoom < ZONE_ZOOM ? 'Zoom in to see the heat zones.' : 'Zoom in further to see the public trees.');
     return;
   }
@@ -270,16 +323,20 @@ function updateMap() {
   const missing = tiles.filter(function (t) { return !treeCache[t]; });
   if (missing.length) { setStatus('Loading trees...'); }
 
+  let failed = 0;
   Promise.all(missing.map(function (t) {
     return getJSON('../data/tree_tiles/' + t + '.geojson')
+      .then(function (data) { treeCache[t] = data; })
       .catch(function (err) {
+        failed++;                 // not saved, so the next move tries this square again
         console.warn(err.message);
-        return { type: 'FeatureCollection', features: [] };
-      })
-      .then(function (data) { treeCache[t] = data; });
+      });
   })).then(function () {
     if (thisRequest !== requestNumber) { return; }   // the map moved again while downloading
-    drawTrees(tiles, view);
+    drawTrees(tiles.filter(function (t) { return treeCache[t]; }), view);
+    setProblem('trees', failed
+      ? 'Some public trees did not load, so trees may be missing from this view. Move the map or reload the page to try again.'
+      : null);
   });
 }
 
