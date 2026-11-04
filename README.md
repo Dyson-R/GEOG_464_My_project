@@ -23,18 +23,30 @@ What is the map about: Trees and heat island effect. How trees can affect temper
 What do the darkest colours mean: Higher temperature. 
 Basemap: © OpenStreetMap contributors.
 
-## A3 feature: Temperature Graph
+## A3 feature: Temperature Graph 
 For A3 I will add Graph, so that my reader can comapre heat data from different boroughs and click on teh different bars to zoom to the borough.
 It has depth because it responds in both directions, you can click on the bar and it will zoom the the borough and if you click on the borough it can highlight the bar in the graph.
 I will know it works when it displays heat data for all boroughs and clicking on a bar changes where we are zoomed in on the map.
 My edge case is is the six boroughs with no public tree data (Outremont, Anjou, LaSalle, Montréal-Nord, Saint-Laurent and L’Île-Bizard–Sainte-Geneviève). Their bars must say “no tree data” instead of showing 0 trees per km², so a planner doesn’t read missing data as “this borough has no trees”. There should be no errors in the console.
 
-Test 1. I will Click on Saint-Leonard on the graph. 
+Test 1. I will Click on Saint-Leonard on the graph. It passed
 Expected: It will zoom to the borough allowing me to see heat zones and showing me the boroughs popup with tree and temperature data. 
 
-Test 2. With the Saint-Leonard borough popup open, I will zoom out and click on annother borough. 
+Test 2. With the Saint-Leonard borough popup open, I will zoom out and click on annother borough. It passed
 Expected: The heat zones will dissapear and the borough heat polygon will apear, when clickign on annother borough its popup will show and the borough will be highlighted in the graph. 
-Test 3. With the console open, I zoom to street level over Saint-Laurent, where the city has no public tree data.
+Test 3. With the console open, I zoom to street level over Saint-Laurent, where the city has no public tree data. It passed
 Expected: The heat zones show but there are no tree dots, and the status line explains that there is no public tree data for this area. No red errors in the console.
 
+
+## Pre-flight report (Lab 7)
+| Check | Result | What I did |
+| --- | --- | --- |
+| 1. Cold start | pass / fault: pass | fixed in commit "..." / known issue |
+| 2. Read every label | pass | ... |
+| 3. Ask twice | pass | ... |
+| 4. The edge | pass| ... |
+| 5. The data does not come | Fault | added new message box that shows what file is missing  |
+| 6. On a phone (size view and my phone) | ... | ... |
+| 7. Mouse in my pocket | ... | ... |
+| 8. Accessibility audit | ... | ... |
 © 2026 Luke Russell. All rights reserved.
