@@ -2,6 +2,7 @@
 // Each problem gets a key, so fixing one (e.g. trees load on the next try) doesn't hide another.
 // The message shows in the status line and in a box on top of the map.
 const problems = {};
+let normalStatus = '';   // the latest normal status message ("Zoom in to see…", "120 public trees in view.")
 
 function setProblem(key, text) {
   if (text) { problems[key] = text; } else { delete problems[key]; }
@@ -11,6 +12,7 @@ function setProblem(key, text) {
   let box = document.getElementById('map-message');
   if (!messages.length) {
     if (box) { box.remove(); }
+    showStatus();   // back to the normal status message
     return;
   }
   if (!box && mapDiv) {
@@ -24,7 +26,14 @@ function setProblem(key, text) {
     mapDiv.appendChild(box);
   }
   if (box) { box.textContent = messages.join(' '); }
-  setStatus(messages.join(' '));
+  showStatus();
+}
+
+// The status line shows any problem first, so moving the map can't hide it; otherwise the normal message.
+function showStatus() {
+  const messages = Object.keys(problems).map(function (k) { return problems[k]; });
+  const status = document.getElementById('status');
+  if (status) { status.textContent = messages.length ? messages.join(' ') : normalStatus; }
 }
 
 
@@ -60,7 +69,8 @@ const TREE_ZOOM = 15;   // trees from here
 map.createPane('zonesPane').style.zIndex = 350;
  
 function setStatus(text) {
-  document.getElementById('status').textContent = text;
+  normalStatus = text;
+  showStatus();
 }
 
 // Download a JSON file. If it fails (missing, blocked, or no connection), the error names the file.
