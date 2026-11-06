@@ -13,10 +13,12 @@
       <h1>Temperature and Public Trees in the Different Boroughs of Montreal</h1>
       <p id="status">Loading boroughs...</p>
       <section>
-        <h2>Borough Temperatures, Hottest to Coolest</h2>
-        <p class="chart-note">Click a borough to find it on the map.</p>
-        <div id="chart">Loading chart...</div>
-        <p class="chart-note" id="chart-scale"></p>
+        <details class="chart-panel" open>
+          <summary><h2>Borough Temperatures, Hottest to Coolest</h2></summary>
+          <p class="chart-note">Click a borough to find it on the map.</p>
+          <div id="chart">Loading chart...</div>
+          <p class="chart-note" id="chart-scale"></p>
+        </details>
       </section>
     </main>
     <div id="map"></div>

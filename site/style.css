@@ -89,3 +89,56 @@ a { color: var(--accent); }
   .legend { font-size: 12px; line-height: 1.4; max-width: 60vw; }
   .legend-body { max-height: 40vh; overflow-y: auto; }   /* scrolls inside instead of covering the map */
 }
+
+/* ---- Chart: click the heading (or its arrow) to collapse or expand it ---- */
+.chart-panel > summary {
+  cursor: pointer;
+  list-style: none;          /* hide the browser's own triangle; we draw our own arrow below */
+}
+.chart-panel > summary::-webkit-details-marker { display: none; }   /* same, for Safari */
+.chart-panel > summary h2 { display: inline; }
+.chart-panel > summary::before {
+  content: "▸";
+  display: inline-block;
+  width: 1em;
+  margin-right: 4px;
+  color: var(--accent);
+  transition: transform 0.15s;
+}
+.chart-panel[open] > summary::before { transform: rotate(90deg); }   /* points down when open */
+.chart-panel > summary:hover h2 { text-decoration: underline; }
+
+/* ---- "Reset view" button on the map ---- */
+.reset-view button {
+  display: block;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #1b1f2a;
+  font: 600 13px/1.2 system-ui, sans-serif;
+  cursor: pointer;
+}
+.reset-view button:hover, .reset-view button:focus-visible { background: #eef3ee; }
+
+/* Put the reset button and menu beside the zoom buttons instead of under them
+   (Leaflet normally stacks the controls in a corner on top of each other) */
+.leaflet-top.leaflet-left { display: flex; align-items: flex-start; }
+
+/* The button and the borough menu sit side by side in one white box */
+.reset-view { display: flex; align-items: stretch; background: #ffffff; }
+.reset-view select {
+  max-width: 13em;            /* long names are cut off in the closed menu, shown in full when open */
+  padding: 6px 8px;
+  border: 0;
+  border-left: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+  background: #ffffff;
+  color: #1b1f2a;
+  font: 13px/1.2 system-ui, sans-serif;
+  cursor: pointer;
+}
+.reset-view select:disabled { color: #888888; cursor: default; }
+@media (max-width: 700px) {
+  .reset-view select { max-width: 9em; }
+}

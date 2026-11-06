@@ -51,10 +51,64 @@ const TOUCH = window.matchMedia('(pointer: coarse)').matches;           // tappe
 // preferCanvas draws every shape on one canvas instead of one web page element each.
 // tolerance makes the tappable area around each shape bigger than the shape itself (in pixels),
 // so small tree dots are easy to hit with a finger without drawing them bigger.
+const START_CENTER = [45.55, -73.65];   // where the map opens, and where "Reset view" goes back to
+const START_ZOOM = 11;
 const map = L.map('map', {
   preferCanvas: true,
   renderer: L.canvas({ tolerance: TOUCH ? 12 : 3 })
-}).setView([45.55, -73.65], 11);
+}).setView(START_CENTER, START_ZOOM);
+
+// "Reset view" button and borough menu, under the zoom buttons.
+let boroughMenu = null;   // the drop-down menu, filled with borough names once the boroughs load
+const resetControl = L.control({ position: 'topleft' });
+resetControl.onAdd = function () {
+  const bar = L.DomUtil.create('div', 'leaflet-bar reset-view');
+  const button = L.DomUtil.create('button', '', bar);
+  button.type = 'button';
+  button.textContent = '⟲ Reset view';
+  button.title = 'Unselect the borough and go back to the whole island';
+  button.addEventListener('click', resetView);
+
+  // Drop-down menu: picking a borough does the same as clicking it in the chart.
+  boroughMenu = L.DomUtil.create('select', '', bar);
+  boroughMenu.setAttribute('aria-label', 'Select a borough');
+  boroughMenu.innerHTML = '<option value="" disabled selected>Select a borough</option>';
+  boroughMenu.disabled = true;   // until the boroughs have loaded
+  boroughMenu.addEventListener('change', function () {
+    if (boroughMenu.value) { selectBorough(boroughMenu.value, true); }
+  });
+
+  L.DomEvent.disableClickPropagation(bar);    // using the button or menu doesn't also click the map
+  L.DomEvent.disableScrollPropagation(bar);
+  return bar;
+};
+resetControl.addTo(map);
+
+// Put the borough names in the menu, in alphabetical order (French accents sorted correctly).
+function fillBoroughMenu(features) {
+  if (!boroughMenu) { return; }
+  features
+    .map(function (f) { return f.properties.NOM; })
+    .sort(function (a, b) { return a.localeCompare(b, 'fr'); })
+    .forEach(function (name) {
+      const option = document.createElement('option');
+      option.value = name;
+      option.textContent = name;
+      boroughMenu.appendChild(option);
+    });
+  boroughMenu.disabled = false;
+}
+
+function resetView() {
+  selectedName = null;
+  if (heatLayer) { heatLayer.setStyle(boroughStyle); }   // remove the dark outline
+  document.querySelectorAll('.chart-row.selected').forEach(function (row) {
+    row.classList.remove('selected');                     // remove the chart highlight
+  });
+  if (boroughMenu) { boroughMenu.value = ''; }            // menu back to "Select a borough"
+  map.closePopup();
+  map.setView(START_CENTER, START_ZOOM);
+}
  
 // The OpenStreetMap basemap, slightly faded so the heat colours stand out on top of it.
 // (opacity: 1 is full strength; lower numbers fade it more.)
@@ -235,6 +289,7 @@ Promise.all([
     ).addTo(map);
  
     buildChart(data.features, heatColour);
+    fillBoroughMenu(data.features);
     updateMap();   // in case the map starts zoomed in
   })
   .catch(function (err) {
@@ -299,6 +354,9 @@ function buildChart(features, heatColour) {
 function selectBorough(name, fromChart) {
   selectedName = name;
   heatLayer.setStyle(boroughStyle);   // move the dark outline
+
+  // Show the same borough in the menu, whichever way it was picked (map, chart or menu).
+  if (boroughMenu) { boroughMenu.value = name; }
 
   // Highlight the borough's row in the chart, without scrolling the page to it.
   document.querySelectorAll('.chart-row').forEach(function (row) {
