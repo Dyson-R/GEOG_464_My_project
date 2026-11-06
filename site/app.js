@@ -300,15 +300,17 @@ function selectBorough(name, fromChart) {
   selectedName = name;
   heatLayer.setStyle(boroughStyle);   // move the dark outline
 
+  // Highlight the borough's row in the chart, without scrolling the page to it.
   document.querySelectorAll('.chart-row').forEach(function (row) {
     row.classList.toggle('selected', row.dataset.name === name);
-    if (row.dataset.name === name && !fromChart) { row.scrollIntoView({ block: 'nearest' }); }
   });
 
   if (fromChart) {
     if (!map.hasLayer(heatLayer)) { heatLayer.addTo(map); }   // turn the boroughs back on if they were off
     const layer = boroughLayers[name];
-    map.fitBounds(layer.getBounds());
+    // Zoom to the borough, but never past the borough-colour level (zoom 12),
+    // so small boroughs don't jump straight to the heat zones.
+    map.fitBounds(layer.getBounds(), { maxZoom: ZONE_ZOOM - 1 });
     layer.openPopup();
   }
 }
