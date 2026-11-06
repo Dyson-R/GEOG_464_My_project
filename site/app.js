@@ -44,8 +44,17 @@ if (typeof L === 'undefined') {
   throw new Error('Leaflet did not load');
 }
 
+// Phones and small screens: a smaller legend and layer switcher, and easier-to-tap trees.
+const SMALL_SCREEN = window.matchMedia('(max-width: 700px)').matches;   // narrow screen, like a phone
+const TOUCH = window.matchMedia('(pointer: coarse)').matches;           // tapped with a finger, not a mouse
+
 // preferCanvas draws every shape on one canvas instead of one web page element each.
-const map = L.map('map', { preferCanvas: true }).setView([45.55, -73.65], 11);
+// tolerance makes the tappable area around each shape bigger than the shape itself (in pixels),
+// so small tree dots are easy to hit with a finger without drawing them bigger.
+const map = L.map('map', {
+  preferCanvas: true,
+  renderer: L.canvas({ tolerance: TOUCH ? 12 : 3 })
+}).setView([45.55, -73.65], 11);
  
 // The OpenStreetMap basemap, slightly faded so the heat colours stand out on top of it.
 // (opacity: 1 is full strength; lower numbers fade it more.)
@@ -183,6 +192,20 @@ Promise.all([
     const legend = L.control({ position: 'bottomright' });
     legend.onAdd = function () {
       const div = L.DomUtil.create('div', 'legend');
+      L.DomEvent.disableClickPropagation(div);    // tapping the legend doesn't click the map under it
+      L.DomEvent.disableScrollPropagation(div);   // scrolling inside it doesn't zoom the map
+
+      // A button to show or hide the legend. Hidden at first on small screens, shown on large ones.
+      const toggle = L.DomUtil.create('button', 'legend-toggle', div);
+      toggle.type = 'button';
+      const body = L.DomUtil.create('div', 'legend-body', div);
+      function setOpen(open) {
+        body.hidden = !open;
+        toggle.textContent = open ? 'Legend ▾' : 'Legend ▸';
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      toggle.addEventListener('click', function () { setOpen(body.hidden); });
+
       const boroughRows = heatColours.map(function (colour, i) {
         const from = breaks[i].toFixed(1);
         const to = i < breaks.length - 1 ? breaks[i + 1].toFixed(1) : temps[temps.length - 1].toFixed(1);
@@ -192,9 +215,10 @@ Promise.all([
         return '<span style="background:' + colour + '"></span>' +
           zoneInfo.lows[i].toFixed(1) + ' to ' + zoneInfo.highs[i].toFixed(1) + ' °C';
       });
-      div.innerHTML = '<strong>Borough average temperature</strong><br>' + boroughRows.join('<br>') +
+      body.innerHTML = '<strong>Borough average temperature</strong><br>' + boroughRows.join('<br>') +
         '<br><strong>Heat zones (zoom in)</strong><br>' + zoneRows.join('<br>') +
         '<br><span style="background:' + treeColour + '"></span>Public tree (zoom in further)';
+      setOpen(!SMALL_SCREEN);
       return div;
     };
     legend.addTo(map);
@@ -207,7 +231,7 @@ Promise.all([
         'Heat zones (zoom in to see)': zonesLayer,
         'Public trees (zoom in further)': treesLayer
       },
-      { collapsed: false }
+      { collapsed: SMALL_SCREEN }   // on phones, a small icon you tap to open
     ).addTo(map);
  
     buildChart(data.features, heatColour);
@@ -379,7 +403,7 @@ function drawTrees(tiles, view) {
   L.geoJSON({ type: 'FeatureCollection', features: visible }, {
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng, {
-        radius: 2.5,
+        radius: TOUCH ? 4 : 2.5,   // a little bigger on touch screens
         weight: 0,
         fillOpacity: 0.8,
         fillColor: treeColour
