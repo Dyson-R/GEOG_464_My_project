@@ -168,7 +168,7 @@ Promise.all([
           'Area classed as heat island: ' + p.pct_heat_island + ' %<br>' +
           'Public trees: ' + (hasTreeData(p)
             ? p.tree_count + ' (' + p.trees_per_km2 + ' per km²)'
-            : 'no data (not in the city’s tree inventory)'));
+            : 'No data (not in the City’s tree inventory)'));
 
         boroughLayers[p.NOM] = layer;
         // Clicking a borough on the map highlights it here and in the chart (the popup opens on its own).
@@ -285,7 +285,7 @@ function buildChart(features, heatColour) {
       '<span class="chart-temp">' + Number(p.temp_mean).toFixed(1) + ' °C</span>' +
       '<span class="chart-trees">' + (hasTreeData(p)
         ? Number(p.trees_per_km2).toLocaleString('en-CA')
-        : '<em>no data</em>') + '</span>';
+        : '<em>No data</em>') + '</span>';
     row.addEventListener('click', function () { selectBorough(p.NOM, true); });
     chart.appendChild(row);
   });
@@ -414,8 +414,8 @@ function drawTrees(tiles, view) {
     onEachFeature: function (feature, layer) {
       const p = feature.properties;
       layer.bindPopup('<strong>' + (p.Essence_ang || 'Unknown species') + '</strong><br>' +
-        'Trunk diameter (DHP): ' + (p.DHP != null ? p.DHP + ' cm' : 'Not Recorded') + '<br>' +
-        'Planted: ' + (p.Date_Plantation || 'Not Recorded'));   // the notebook already removed the time
+        'Trunk diameter (DBH): ' + (p.DHP != null ? p.DHP + ' cm' : 'Not recorded') + '<br>' +
+        'Planted: ' + (p.Date_Plantation || 'Not recorded'));   // the notebook already removed the time
     }
   }).addTo(treesLayer);
  
