@@ -285,7 +285,7 @@ Promise.all([
         'Heat zones (zoom in to see)': zonesLayer,
         'Public trees (zoom in further)': treesLayer
       },
-      { collapsed: SMALL_SCREEN }   // on phones, a small icon you tap to open
+      { collapsed: true }   
     ).addTo(map);
  
     buildChart(data.features, heatColour);
@@ -366,10 +366,15 @@ function selectBorough(name, fromChart) {
   if (fromChart) {
     if (!map.hasLayer(heatLayer)) { heatLayer.addTo(map); }   // turn the boroughs back on if they were off
     const layer = boroughLayers[name];
-    // Zoom to the borough, but never past the borough-colour level (zoom 12),
+    // Zoom so the whole borough fits, but never past the borough-colour level (zoom 12),
     // so small boroughs don't jump straight to the heat zones.
-    map.fitBounds(layer.getBounds(), { maxZoom: ZONE_ZOOM - 1 });
+    const bounds = layer.getBounds();
+    const zoom = Math.min(map.getBoundsZoom(bounds), ZONE_ZOOM - 1);
+
+    // Open the popup first: opening it can nudge the map to make room for it.
+    // Then centre the map on the borough, so it ends up in the middle of the map.
     layer.openPopup();
+    map.setView(bounds.getCenter(), zoom);
   }
 }
 
