@@ -65,7 +65,9 @@ resetControl.onAdd = function () {
   const bar = L.DomUtil.create('div', 'leaflet-bar reset-view');
   const button = L.DomUtil.create('button', '', bar);
   button.type = 'button';
-  button.textContent = '⟲ Reset view';
+  // The ⟲ symbol always shows; the words "Reset view" are hidden on phones to leave room for the menu.
+  button.innerHTML = '<span aria-hidden="true">⟲</span><span class="reset-label"> Reset view</span>';
+  button.setAttribute('aria-label', 'Reset view');
   button.title = 'Unselect the borough and go back to the whole island';
   button.addEventListener('click', resetView);
 

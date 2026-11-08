@@ -141,20 +141,27 @@ a { color: var(--accent); }
 /* The button and the borough menu sit side by side in one white box */
 .reset-view { display: flex; align-items: stretch; background: #ffffff; }
 .reset-view select {
+  -webkit-appearance: none;   /* turn off the phone's own menu styling, which adds a wide arrow area */
+  appearance: none;           /* and cuts off the text; we draw our own small arrow instead */
   max-width: 13em;            /* long names are cut off in the closed menu, shown in full when open */
-  padding: 6px 8px;
+  padding: 6px 24px 6px 8px;  /* the right padding is room for the arrow */
   border: 0;
   border-left: 1px solid #ccc;
   border-radius: 0 4px 4px 0;
-  background: #ffffff;
+  background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%231b1f2a'/%3E%3C/svg%3E") no-repeat right 8px center;
   color: #1b1f2a;
   font: 13px/1.2 system-ui, sans-serif;
   cursor: pointer;
 }
 .reset-view select:disabled { color: #888888; cursor: default; }
 @media (max-width: 700px) {
-  /* wide enough for the whole "Select a borough" plus the menu arrow; longer names are cut off */
-  .reset-view select { min-width: 11.5em; max-width: 12.5em; }
+  .reset-label { display: none; }     /* phones: just the ⟲ symbol on the reset button */
+  .reset-view button { font-size: 18px; padding: 4px 10px; }
+  .reset-view select {
+    width: 11.5em;                    /* a fixed width that fits "Select a borough" plus the arrow */
+    max-width: none;
+    font-size: 16px;                  /* 16px or more stops iPhones zooming the page when you tap the menu */
+  }
 }
 
 /* The borough menu is for phones only: on wider screens, hide it (the chart is there to pick from) */
