@@ -90,23 +90,36 @@ a { color: var(--accent); }
   .legend-body { max-height: 40vh; overflow-y: auto; }   /* scrolls inside instead of covering the map */
 }
 
-/* ---- Chart: click the heading (or its arrow) to collapse or expand it ---- */
+/* ---- Chart: the heading is a button-style box that opens and closes the chart ---- */
 .chart-panel > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #cfdccf;
+  border-radius: 6px;
+  background: #eef3ee;          /* same light green as the map's Legend button */
   cursor: pointer;
-  list-style: none;          /* hide the browser's own triangle; we draw our own arrow below */
+  list-style: none;             /* hide the browser's own triangle; we draw our own arrow below */
 }
 .chart-panel > summary::-webkit-details-marker { display: none; }   /* same, for Safari */
-.chart-panel > summary h2 { display: inline; }
+.chart-panel > summary:hover { background: #e2ece2; }
+.chart-panel > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .chart-panel > summary::before {
   content: "▸";
-  display: inline-block;
-  width: 1em;
-  margin-right: 4px;
+  flex: none;
   color: var(--accent);
+  font-size: 1.1em;
   transition: transform 0.15s;
 }
 .chart-panel[open] > summary::before { transform: rotate(90deg); }   /* points down when open */
-.chart-panel > summary:hover h2 { text-decoration: underline; }
+.chart-panel > summary h2 { flex: 1; margin: 0; font-size: 1.15em; }
+.chart-panel[open] > summary { margin-bottom: 8px; }
+
+/* "Show chart" when closed, "Hide chart" when open */
+.chart-hint { flex: none; color: var(--muted); font-size: 13px; font-weight: 600; }
+.chart-hint-hide, .chart-panel[open] .chart-hint-show { display: none; }
+.chart-panel[open] .chart-hint-hide { display: inline; }
 
 /* ---- "Reset view" button on the map ---- */
 .reset-view button {
@@ -140,5 +153,11 @@ a { color: var(--accent); }
 }
 .reset-view select:disabled { color: #888888; cursor: default; }
 @media (max-width: 700px) {
-  .reset-view select { max-width: 9em; }
+  /* wide enough for the whole "Select a borough" plus the menu arrow; longer names are cut off */
+  .reset-view select { min-width: 11.5em; max-width: 12.5em; }
+}
+
+/* The borough menu is for phones only: on wider screens, hide it (the chart is there to pick from) */
+@media (min-width: 701px) {
+  .reset-view select { display: none; }
 }

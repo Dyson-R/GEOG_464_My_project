@@ -218,7 +218,7 @@ Promise.all([
       onEachFeature: function (feature, layer) {
         const p = feature.properties;
         layer.bindPopup('<strong>' + p.NOM + '</strong><br>' +
-          'Average surface temperature: ' + p.temp_mean + ' °C<br>' +
+          'Avg. surface temperature: ' + Number(p.temp_mean).toFixed(1) + ' °C<br>' +
           'Area classed as heat island: ' + p.pct_heat_island + ' %<br>' +
           'Public trees: ' + (hasTreeData(p)
             ? p.tree_count + ' (' + p.trees_per_km2 + ' per km²)'
@@ -269,7 +269,7 @@ Promise.all([
         return '<span style="background:' + colour + '"></span>' +
           zoneInfo.lows[i].toFixed(1) + ' to ' + zoneInfo.highs[i].toFixed(1) + ' °C';
       });
-      body.innerHTML = '<strong>Borough average temperature</strong><br>' + boroughRows.join('<br>') +
+      body.innerHTML = '<strong>Avg. surface temperature</strong><br>' + boroughRows.join('<br>') +
         '<br><strong>Heat zones (zoom in)</strong><br>' + zoneRows.join('<br>') +
         '<br><span style="background:' + treeColour + '"></span>Public tree (zoom in further)';
       setOpen(!SMALL_SCREEN);
@@ -281,11 +281,11 @@ Promise.all([
     L.control.layers(
       { 'Streets': streets },
       {
-        'Average temperature by borough': heatLayer,
+        'Avg. surface temperature': heatLayer,
         'Heat zones (zoom in to see)': zonesLayer,
         'Public trees (zoom in further)': treesLayer
       },
-      { collapsed: true }   
+      { collapsed: SMALL_SCREEN }   // on phones, a small icon you tap to open
     ).addTo(map);
  
     buildChart(data.features, heatColour);
@@ -345,8 +345,6 @@ function buildChart(features, heatColour) {
     chart.appendChild(row);
   });
 
-  const scale = document.getElementById('chart-scale');
-  if (scale) { scale.textContent = 'Bars start at ' + low + ' °C, so short bars are cooler, not near zero.'; }
 }
 
 // Pick a borough, from the chart (zoom to it) or from the map (you're already looking at it).
