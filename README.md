@@ -55,6 +55,5 @@ Expected: The heat zones show but there are no tree dots, and the status line ex
 ## Part 3: what I found, and one fix
 Evidence: [Zoomed in and saw the heat island layer but not the trees, looked around before realizing they can zoom in more to find trees, did not notice the trees had popups. ; 3]
 Severity: [2, The tester can see where the trees are physically but do not acess all teh information affecting their understanding of the map.]
-My change: [I will add text on the website similar to the one explain]
-Recheck: [the same task, given to someone new, with no help.
-          Fixed means: they do it without hesitating at that spot]
+My change: [I will add text on the website similar to the one explaining to zoom in and have popups telling users to click on the points for data when hovering over the points.]
+Recheck: [Zoomed into the map and clicked on the tree points; better ]
