@@ -33,7 +33,8 @@ Test 1. I will Click on Saint-Leonard on the graph. It passed
 Expected: It will zoom to the borough allowing me to see heat zones and showing me the boroughs popup with tree and temperature data. 
 
 Test 2. With the Saint-Leonard borough popup open, I will zoom out and click on annother borough. It passed
-Expected: The heat zones will dissapear and the borough heat polygon will apear, when clickign on annother borough its popup will show and the borough will be highlighted in the graph. 
+Expected: The heat zones will dissapear and the borough heat polygon will apear, when clickign on annother borough it's popup will show and the borough will be highlighted in the graph. 
+
 Test 3. With the console open, I zoom to street level over Saint-Laurent, where the city has no public tree data. It passed
 Expected: The heat zones show but there are no tree dots, and the status line explains that there is no public tree data for this area. No red errors in the console.
 
@@ -49,4 +50,11 @@ Expected: The heat zones show but there are no tree dots, and the status line ex
 | 6. On a phone (size view and my phone) | fault | changed the legend and dot size |
 | 7. Mouse in my pocket | pass | ... |
 | 8. Accessibility audit | pass | ... |
-© 2026 Luke Russell. All rights reserved.
+
+
+## Part 3: what I found, and one fix
+Evidence: [Zoomed in and saw the heat island layer but not the trees, looked around before realizing they can zoom in more to find trees, did not notice the trees had popups. ; 3]
+Severity: [2, The tester can see where the trees are physically but do not acess all teh information affecting their understanding of the map.]
+My change: [I will add text on the website similar to the one explain]
+Recheck: [the same task, given to someone new, with no help.
+          Fixed means: they do it without hesitating at that spot]

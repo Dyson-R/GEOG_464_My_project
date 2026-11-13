@@ -476,11 +476,33 @@ function drawTrees(tiles, view) {
     },
     onEachFeature: function (feature, layer) {
       const p = feature.properties;
+
+      // Computers only (phones have no hover): when the mouse is over a tree, make the dot bigger
+      // with a dark outline, and show its species with "Click for details", so people know it's clickable.
+      if (!TOUCH) {
+        const radius = layer.getRadius();
+        layer.bindTooltip((p.Essence_ang || 'Unknown species') + '<br><em>Click for details</em>', {
+          direction: 'top',
+          offset: [0, -6]
+        });
+        layer.on('mouseover', function () {
+          layer.setRadius(radius + 2);
+          layer.setStyle({ weight: 2, color: '#1b1f2a' });
+        });
+        layer.on('mouseout', function () {
+          layer.setRadius(radius);
+          layer.setStyle({ weight: 0 });
+        });
+        layer.on('click', function () { layer.closeTooltip(); });   // the popup takes over
+      }
+
       layer.bindPopup('<strong>' + (p.Essence_ang || 'Unknown species') + '</strong><br>' +
         'Trunk diameter (DBH): ' + (p.DHP != null ? p.DHP + ' cm' : 'Not recorded') + '<br>' +
         'Planted: ' + (p.Date_Plantation || 'Not recorded'));   // the notebook already removed the time
     }
   }).addTo(treesLayer);
  
-  setStatus(visible.length + ' public trees in view.');
+  // The tree count, plus a tip saying the trees can be clicked (or tapped, on phones).
+  setStatus(visible.length.toLocaleString('en-CA') + ' public trees in view. ' +
+    (TOUCH ? 'Tap' : 'Click') + ' a tree to see its details.');
 }
