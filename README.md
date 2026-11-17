@@ -57,3 +57,10 @@ Evidence: [Zoomed in and saw the heat island layer but not the trees, looked aro
 Severity: [2, The tester can see where the trees are physically but do not acess all teh information affecting their understanding of the map.]
 My change: [I will add text on the website similar to the one explaining to zoom in and have popups telling users to click on the points for data when hovering over the points.]
 Recheck: [Zoomed into the map and clicked on the tree points; better ]
+
+
+#	What they did (evidence)	What I expected	Severity	Fix it? (yes, later, no)
+1	Looked around the map and saw that in the layer selector the streets could not toggle off. 	Look around the site explore the different elements 	1	Yes
+2	Zoomed in and saw the heat island layer but not the trees, looked around before realizing they can zoom in more to find trees, did not notice the trees had popups. 	Zoom into the map and display heat island and tree data 	2	yes
+3	On the phone, the user used the borough drop-down menu to find the boroughs but did notice that clicking on the borough in the chart also highlighted the borough.	Clicks on either the borough in the chart or in the drop down menu 	2	yes
+4	Zoomed in to map said that it is difficult to see the trees in heat zones of 28.3 to 30.3 °C due to colorblindness.	Zoom into the map and see the heat zones and trees	3	yes
