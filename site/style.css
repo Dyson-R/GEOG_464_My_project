@@ -168,3 +168,59 @@ a { color: var(--accent); }
 @media (min-width: 701px) {
   .reset-view select { display: none; }
 }
+
+/* ---- Second collapsible section (tree species) gets a little space above it ---- */
+section + section { margin-top: 12px; }
+
+/* ---- Most common tree species list ---- */
+.species-row {
+  display: grid;
+  grid-template-columns: 11em 1fr 3.5em;   /* name, bar, percentage */
+  gap: 8px;
+  align-items: center;
+  padding: 2px 4px;
+  font-size: 14px;
+}
+.species-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.species-track { height: 12px; }
+.species-bar { display: block; height: 100%; border-radius: 3px; }   /* coloured by its tree type in app.js */
+.species-pct { text-align: right; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+
+/* ---- Tree type checkboxes on the map ---- */
+.tree-filter {
+  padding: 6px 8px;
+  background: #ffffff;
+  font: 13px/1.3 system-ui, sans-serif;
+  color: #1b1f2a;
+  max-width: 230px;
+}
+.tree-filter-body[hidden] { display: none; }
+.tree-filter-body label { display: flex; align-items: center; gap: 6px; padding: 2px 0; cursor: pointer; }
+.tree-filter-body input { margin: 0; }
+.tree-filter-all { font-weight: 600; border-bottom: 1px solid #e3e7e3; margin-bottom: 2px; }
+.tree-swatch { flex: none; width: 10px; height: 10px; border-radius: 50%; }
+.tree-filter-only { padding: 4px 0 6px; border-bottom: 1px solid #e3e7e3; margin-bottom: 4px; }
+.tree-filter-clear {
+  margin-top: 4px; padding: 3px 8px; border: 1px solid #cfdccf; border-radius: 4px;
+  background: #eef3ee; font: inherit; cursor: pointer;
+}
+.tree-filter-body input:disabled + .tree-swatch { opacity: 0.4; }
+@media (max-width: 700px) {
+  .tree-filter { font-size: 14px; }
+  .tree-filter-body { max-height: 40vh; overflow-y: auto; }
+}
+
+/* ---- Species list rows are buttons: click one to show only that species ---- */
+button.species-row {
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+button.species-row:hover, button.species-row:focus-visible { background: #eef3ee; }
+button.species-row.selected { background: #e2ece2; outline: 2px solid var(--accent); }

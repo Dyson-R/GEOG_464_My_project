@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Montreal Heat Island Effect</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
   <div class="page">
@@ -24,10 +24,21 @@
           <p class="chart-note" id="chart-scale">Areas 35.1 °C or higher are classified as heat islands.</p>
         </details>
       </section>
+      <section>
+        <details class="chart-panel">
+          <summary>
+            <h2>Most Common Tree Species</h2>
+            <span class="chart-hint chart-hint-show">Show list</span>
+            <span class="chart-hint chart-hint-hide">Hide list</span>
+          </summary>
+          <p class="chart-note" id="species-title">Across all boroughs with tree data:</p>
+          <div id="species">Loading tree species...</div>
+        </details>
+      </section>
     </main>
     <div id="map"></div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="app.js?v=8"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>

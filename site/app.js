@@ -86,6 +86,144 @@ resetControl.onAdd = function () {
 };
 resetControl.addTo(map);
 
+// ---------- TREE TYPE FILTER ("Show only…") ----------
+// Each tree's group comes from its English species name, e.g. "Deborah Norway Maple" -> Maples.
+// The groups are checked in this order, and anything that matches none of them is "Other".
+const TREE_GROUPS = [
+// Each group has its own dot colour. They avoid yellows, oranges and reds, which already mean heat.
+  { key: 'maples',  label: 'Maples',        colour: '#1a9641', test: /\bmaple\b/i },
+  { key: 'ashes',   label: 'Ashes',         colour: '#2c7bb6', test: /\bash\b/i, not: /mountain-ash|prickly-ash/i },
+  { key: 'locusts', label: 'Honey-locusts', colour: '#7b3294', test: /honey-?locust/i },
+  { key: 'lindens', label: 'Lindens',       colour: '#35b7c4', test: /\blinden\b|\bbasswood\b/i },
+  { key: 'oaks',    label: 'Oaks',          colour: '#8c510a', test: /\boak\b/i },
+  { key: 'elms',    label: 'Elms',          colour: '#222222', test: /\belm\b/i },
+  { key: 'conifers', label: 'Conifers (pines, spruces, cedars…)', colour: '#00441b',
+    test: /\b(pine|spruce|fir|cedar|larch|tamarack|hemlock|yew|juniper|arborvitae)\b/i }
+];
+const OTHER_TREE_COLOUR = '#8a8a8a';   // grey for every other kind of tree, and unknown species
+
+// The dot colour for a tree's species name.
+function treeColourFor(name) {
+  const key = groupOf(name);
+  const g = TREE_GROUPS.find(function (grp) { return grp.key === key; });
+  return g ? g.colour : OTHER_TREE_COLOUR;
+}
+
+// Which trees are shown. Either several tree types (ticked boxes), or one exact species
+// picked from the species list (which then takes over until a box is changed).
+const ALL_GROUP_KEYS = TREE_GROUPS.map(function (g) { return g.key; }).concat(['other']);
+let shownGroups = new Set(ALL_GROUP_KEYS);   // all ticked at the start
+let onlySpecies = null;                      // e.g. 'Norway Maple', or null
+
+function groupOf(name) {
+  if (!name) { return 'other'; }
+  const g = TREE_GROUPS.find(function (grp) { return grp.test.test(name) && !(grp.not && grp.not.test(name)); });
+  return g ? g.key : 'other';
+}
+
+function groupLabel(key) {
+  if (key === 'other') { return 'Other trees'; }
+  const g = TREE_GROUPS.find(function (grp) { return grp.key === key; });
+  return g ? g.label : 'All trees';
+}
+
+// The tree type checkboxes, bottom left of the map. They only show once you're zoomed in far enough
+// to see trees. On phones they start folded away behind a "Tree types" button, like the legend.
+let treeFilterBox = null;
+const treeFilterControl = L.control({ position: 'bottomleft' });
+treeFilterControl.onAdd = function () {
+  treeFilterBox = L.DomUtil.create('div', 'leaflet-bar tree-filter');
+
+  const toggle = L.DomUtil.create('button', 'legend-toggle', treeFilterBox);
+  toggle.type = 'button';
+  const body = L.DomUtil.create('div', 'tree-filter-body', treeFilterBox);
+  function setOpen(open) {
+    body.hidden = !open;
+    toggle.textContent = open ? 'Tree types ▾' : 'Tree types ▸';
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  toggle.addEventListener('click', function () { setOpen(body.hidden); });
+
+  const rows = TREE_GROUPS.map(function (g) { return { key: g.key, label: g.label, colour: g.colour }; })
+    .concat([{ key: 'other', label: 'Other trees', colour: OTHER_TREE_COLOUR }]);
+  body.innerHTML =
+    // Shown only while one species from the list is on the map
+    '<div class="tree-filter-only" hidden>Only: <strong></strong> ' +
+      '<button type="button" class="tree-filter-clear">Show all types</button></div>' +
+    '<label class="tree-filter-all"><input type="checkbox" data-key="all" checked> All tree types</label>' +
+    rows.map(function (r) {
+      return '<label><input type="checkbox" data-key="' + r.key + '" checked>' +
+        '<span class="tree-swatch" style="background:' + r.colour + '"></span>' + r.label + '</label>';
+    }).join('');
+
+  body.addEventListener('change', function (e) {
+    const key = e.target.dataset.key;
+    if (!key) { return; }
+    clearOnlySpecies();   // changing a box goes back to choosing by type
+    if (key === 'all') {
+      shownGroups = e.target.checked ? new Set(ALL_GROUP_KEYS) : new Set();
+    } else if (e.target.checked) {
+      shownGroups.add(key);
+    } else {
+      shownGroups.delete(key);
+    }
+    syncTreeFilter();
+    updateMap();   // redraw the trees (the tree files are already downloaded)
+  });
+  body.querySelector('.tree-filter-clear').addEventListener('click', function () {
+    clearOnlySpecies();
+    shownGroups = new Set(ALL_GROUP_KEYS);
+    syncTreeFilter();
+    updateMap();
+  });
+
+  L.DomEvent.disableClickPropagation(treeFilterBox);
+  L.DomEvent.disableScrollPropagation(treeFilterBox);
+  setOpen(!SMALL_SCREEN);
+  treeFilterBox.style.display = 'none';   // hidden until the trees show
+  return treeFilterBox;
+};
+
+// Make the boxes and the "Only: …" line match the current choice.
+function syncTreeFilter() {
+  if (!treeFilterBox) { return; }
+  treeFilterBox.querySelectorAll('input[data-key]').forEach(function (box) {
+    const key = box.dataset.key;
+    if (key === 'all') {
+      box.checked = shownGroups.size === ALL_GROUP_KEYS.length;
+      box.indeterminate = shownGroups.size > 0 && shownGroups.size < ALL_GROUP_KEYS.length;
+    } else {
+      box.checked = shownGroups.has(key);
+    }
+    box.disabled = !!onlySpecies;   // greyed out while one species is shown
+  });
+  const only = treeFilterBox.querySelector('.tree-filter-only');
+  only.hidden = !onlySpecies;
+  only.querySelector('strong').textContent = onlySpecies || '';
+}
+
+function clearOnlySpecies() {
+  onlySpecies = null;
+  document.querySelectorAll('.species-row.selected').forEach(function (row) { row.classList.remove('selected'); });
+}
+
+// Does this tree pass the filter?
+function treeShown(name) {
+  if (onlySpecies) { return name === onlySpecies; }
+  return shownGroups.has(groupOf(name));
+}
+
+// Words for the status line, e.g. " (Norway Maple only)" or " (maples, ashes only)".
+function filterWords() {
+  if (onlySpecies) { return ' (' + onlySpecies + ' only)'; }
+  if (shownGroups.size === ALL_GROUP_KEYS.length) { return ''; }
+  if (!shownGroups.size) { return ' (no tree types ticked)'; }
+  return ' (' + ALL_GROUP_KEYS.filter(function (k) { return shownGroups.has(k); })
+    .map(function (k) { return groupLabel(k).replace(/ \(.*\)/, '').toLowerCase(); }).join(', ') + ' only)';
+}
+
+treeFilterControl.addTo(map);
+
 // Put the borough names in the menu, in alphabetical order (French accents sorted correctly).
 function fillBoroughMenu(features) {
   if (!boroughMenu) { return; }
@@ -108,6 +246,10 @@ function resetView() {
     row.classList.remove('selected');                     // remove the chart highlight
   });
   if (boroughMenu) { boroughMenu.value = ''; }            // menu back to "Select a borough"
+  clearOnlySpecies();                                     // all tree types shown again
+  shownGroups = new Set(ALL_GROUP_KEYS);
+  syncTreeFilter();
+  showSpecies(null);                                      // species list back to all boroughs
   map.closePopup();
   map.setView(START_CENTER, START_ZOOM);
 }
@@ -123,7 +265,6 @@ streets.addTo(map);
  
 // Heat colours: from coolest (yellow) to hottest (dark red). The notebook uses the same list for the zones image.
 const heatColours = ['#fed976', '#feb24c', '#fd8d3c', '#f03b20', '#bd0026'];
-const treeColour = '#1a9641';
 
 // What appears at which zoom. (11 = whole island, 13 = a few neighbourhoods, 15 = a few streets, 19 = closest)
 const ZONE_ZOOM = 13;   // heat zones from here
@@ -273,7 +414,11 @@ Promise.all([
       });
       body.innerHTML = '<strong>Avg. surface temperature</strong><br>' + boroughRows.join('<br>') +
         '<br><strong>Heat zones (zoom in)</strong><br>' + zoneRows.join('<br>') +
-        '<br><span style="background:' + treeColour + '"></span>Public tree (zoom in further)';
+        '<br><strong>Public trees (zoom in further)</strong><br>' +
+        TREE_GROUPS.map(function (g) {
+          return '<span style="background:' + g.colour + '"></span>' + g.label;
+        }).join('<br>') +
+        '<br><span style="background:' + OTHER_TREE_COLOUR + '"></span>Other trees';
       setOpen(!SMALL_SCREEN);
       return div;
     };
@@ -357,6 +502,7 @@ function selectBorough(name, fromChart) {
 
   // Show the same borough in the menu, whichever way it was picked (map, chart or menu).
   if (boroughMenu) { boroughMenu.value = name; }
+  showSpecies(name);   // the species list switches to this borough
 
   // Highlight the borough's row in the chart, without scrolling the page to it.
   document.querySelectorAll('.chart-row').forEach(function (row) {
@@ -376,6 +522,85 @@ function selectBorough(name, fromChart) {
     layer.openPopup();
     map.setView(bounds.getCenter(), zoom);
   }
+}
+
+
+// ---------- MOST COMMON TREE SPECIES (left column) ----------
+// tree_species.json is a small summary made in the notebook: the top species for all boroughs together
+// and for each borough. It loads on its own, so if it fails only this list is affected, not the map.
+let speciesData = null;
+
+getJSON('../data/tree_species.json')
+  .then(function (data) {
+    speciesData = data;
+    showSpecies(selectedName);
+  })
+  .catch(function (err) {
+    const box = document.getElementById('species');
+    if (box) { box.textContent = 'The tree species list did not load. Reload the page to try again.'; }
+    console.warn(err.message);
+  });
+
+// Show the top species for one borough, or for all boroughs when name is null.
+function showSpecies(name) {
+  const box = document.getElementById('species');
+  const title = document.getElementById('species-title');
+  if (!box || !speciesData) { return; }
+
+  const entry = name ? speciesData.boroughs[name] : speciesData.city;
+  if (title) {
+    title.textContent = name ? 'In ' + name + ':' : 'Across all boroughs with tree data:';
+  }
+  // Boroughs outside the tree inventory only have a few trees from just over their border: treat as no data.
+  const layer = name && boroughLayers[name];
+  const noData = layer && !hasTreeData(layer.feature.properties);
+  if (!entry || !entry.top.length || noData) {
+    box.textContent = 'No tree species data for this borough (it is not in the City’s tree inventory).';
+    return;
+  }
+
+  const most = entry.top[0][1];   // the biggest count, so the longest bar is full width
+  box.innerHTML = entry.top.map(function (row) {
+    const species = row[0];
+    const count = row[1];
+    const pct = 100 * count / entry.total;
+    const spot = row[2] ? row[2].join(',') : '';   // where this species is most common, from the notebook
+    return '<button type="button" class="species-row' + (species === onlySpecies ? ' selected' : '') + '"' +
+      ' data-species="' + species + '" data-spot="' + spot + '">' +
+      '<span class="species-name" title="' + species + '">' + species + '</span>' +
+      '<span class="species-track"><span class="species-bar" style="width:' + (100 * count / most) + '%; background:' + treeColourFor(species) + '"></span></span>' +
+      '<span class="species-pct">' + pct.toFixed(1) + ' %</span>' +
+      '</button>';
+  }).join('') +
+    '<p class="chart-note">Out of ' + entry.total.toLocaleString('en-CA') + ' public trees. ' +
+    'Click a species to show only that species on the map.</p>';
+
+  box.querySelectorAll('.species-row').forEach(function (row) {
+    row.addEventListener('click', function () { pickSpecies(row.dataset.species, row.dataset.spot); });
+  });
+}
+
+// Show only one species, and zoom in to where it's most common (in the chosen borough, or overall).
+function pickSpecies(species, spot) {
+  onlySpecies = species;
+  document.querySelectorAll('.species-row').forEach(function (row) {
+    row.classList.toggle('selected', row.dataset.species === species);
+  });
+  syncTreeFilter();
+  if (!map.hasLayer(treesLayer)) { treesLayer.addTo(map); }   // turn the trees back on if they were off
+  map.closePopup();
+
+  let centre = spot ? spot.split(',').map(Number) : null;
+  if (!centre && selectedName && boroughLayers[selectedName]) {
+    centre = boroughLayers[selectedName].getBounds().getCenter();   // no spot saved: the borough's middle
+  }
+  // Zoom to tree level. If the map is already there and doesn't move, redraw the trees anyway.
+  if (centre) {
+    map.setView(centre, Math.max(map.getZoom(), TREE_ZOOM));
+  } else if (map.getZoom() < TREE_ZOOM) {
+    map.setZoom(TREE_ZOOM);
+  }
+  updateMap();
 }
 
 
@@ -404,6 +629,8 @@ function updateMap() {
   } else {
     zonesLayer.clearLayers();
   }
+
+  if (treeFilterBox) { treeFilterBox.style.display = showTrees ? '' : 'none'; }
 
   if (!showTrees) {
     treesLayer.clearLayers();
@@ -460,7 +687,9 @@ function drawTrees(tiles, view) {
   tiles.forEach(function (t) {
     treeCache[t].features.forEach(function (f) {
       const c = f.geometry.coordinates;   // GeoJSON order: [longitude, latitude]
-      if (view.contains([c[1], c[0]])) { visible.push(f); }
+      if (!view.contains([c[1], c[0]])) { return; }
+      if (!treeShown(f.properties.Essence_ang)) { return; }   // the tree type / species filter
+      visible.push(f);
     });
   });
 
@@ -471,30 +700,11 @@ function drawTrees(tiles, view) {
         radius: TOUCH ? 4 : 2.5,   // a little bigger on touch screens
         weight: 0,
         fillOpacity: 0.8,
-        fillColor: treeColour
+        fillColor: treeColourFor(feature.properties.Essence_ang)   // the colour of its tree type
       });
     },
     onEachFeature: function (feature, layer) {
       const p = feature.properties;
-
-      // Computers only (phones have no hover): when the mouse is over a tree, make the dot bigger
-      // with a dark outline, and show its species with "Click for details", so people know it's clickable.
-      if (!TOUCH) {
-        const radius = layer.getRadius();
-        layer.bindTooltip((p.Essence_ang || 'Unknown species') + '<br><em>Click for details</em>', {
-          direction: 'top',
-          offset: [0, -6]
-        });
-        layer.on('mouseover', function () {
-          layer.setRadius(radius + 2);
-          layer.setStyle({ weight: 2, color: '#1b1f2a' });
-        });
-        layer.on('mouseout', function () {
-          layer.setRadius(radius);
-          layer.setStyle({ weight: 0 });
-        });
-        layer.on('click', function () { layer.closeTooltip(); });   // the popup takes over
-      }
 
       layer.bindPopup('<strong>' + (p.Essence_ang || 'Unknown species') + '</strong><br>' +
         'Trunk diameter (DBH): ' + (p.DHP != null ? p.DHP + ' cm' : 'Not recorded') + '<br>' +
@@ -502,7 +712,5 @@ function drawTrees(tiles, view) {
     }
   }).addTo(treesLayer);
  
-  // The tree count, plus a tip saying the trees can be clicked (or tapped, on phones).
-  setStatus(visible.length.toLocaleString('en-CA') + ' public trees in view. ' +
-    (TOUCH ? 'Tap' : 'Click') + ' a tree to see its details.');
+  setStatus(visible.length + ' public trees in view' + filterWords() + '.');
 }
