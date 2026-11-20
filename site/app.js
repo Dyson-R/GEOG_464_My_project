@@ -419,7 +419,7 @@ Promise.all([
           return '<span style="background:' + g.colour + '"></span>' + g.label;
         }).join('<br>') +
         '<br><span style="background:' + OTHER_TREE_COLOUR + '"></span>Other trees';
-      setOpen(!SMALL_SCREEN);
+      setOpen(false);   // the legend starts collapsed on every screen
       return div;
     };
     legend.addTo(map);
